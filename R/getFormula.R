@@ -16,6 +16,9 @@ getFormula <- function (
 {
 	attributesColumnName <- vector()
 	classesName <- NA
+
+	# iterate through all column names in dataFrame and put it into a vector
+	# apart from classesColumnName
 	for (column in colnames(dataFrame))
 	{
 		if (column == classesColumnName)
@@ -25,11 +28,13 @@ getFormula <- function (
 		}
 		attributesColumnName <- c(attributesColumnName, column)
 	}
+	# return if given classesColumnName does not match dataFrame
 	if (classesName != classesColumnName)
 		return(NA)
 
 	dfName <- dataFrameName
 
+	# generate formula
 	userFormula  <- paste(dfName, "$", classesName, " ~ ", sep = "")
 	for(col in attributesColumnName)
 	{
