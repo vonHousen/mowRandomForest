@@ -31,14 +31,22 @@ mowRandomForest <- function (
 	userParamFormula <- getFormula(df, deparse(substitute(df)), classesName)
 	userParamComplexity <- maxdepth
 
-	# grow a tree
-	simpleTree <- rpart(
-		formula = userParamFormula,
-		method = "class",
-		data = df,
-		cp = userParamComplexity
-		# TODO should other parameters be changed here?
-	)
+	if(ntree < 1)
+		return(NA)
 
-	return(simpleTree)
+	trees <- list(length = ntree)
+	for(i in seq(1, ntree))
+	{
+		# grow a tree
+		singleTree <- rpart(
+			formula = userParamFormula,
+			method = "class",
+			data = df,
+			cp = userParamComplexity
+			# TODO should other parameters be changed here?
+		)
+		trees[[i]] <- singleTree
+	}
+
+	return(trees)
 }
