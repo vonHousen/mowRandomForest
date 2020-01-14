@@ -1,0 +1,16 @@
+Package: mowRandomForest
+Title: Custom implementation of Random Forest based on rpart library.
+Version: 0.0.0.9000
+Authors@R: 
+	person(given = "Michal",
+           family = "Korzeniewski",
+           role = c("aut", "cre"))
+    person(given = "Kamil",
+           family = "Zych",
+           role = c("aut", "cre"),
+           email = "276359@pw.edu.pl")
+Description: Custom implementation of Random Forest based on rpart library.
+License: None
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
