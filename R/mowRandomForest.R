@@ -16,8 +16,6 @@
 #' @return multiple trees representing Random Forest encapsulated inside 'Forest' class.
 #' @export
 
-library(rpart)
-
 mowRandomForest <- function (
 	df,
 	classesName,
