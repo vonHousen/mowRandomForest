@@ -1,8 +1,7 @@
 #'
-#' @title Custom Random Forest.
-#'
 #' @name mowRandomForest
 #'
+#' @title Custom Random Forest.
 #' @description Function constructing custom Random Forest.
 #' It grows mutliple Decision Trees storing them in a single object of 'Forest' class.
 #'
@@ -32,27 +31,22 @@ mowRandomForest <- function (
 	userParamFormula <- getFormula(df, deparse(substitute(df)), classesName)
 	userParamComplexity <- maxdepth
 
+	# check input parameters
 	if(ntree < 1)
 		return(NA)
 	if(is.na(userParamFormula))
 		return(NA)
 
+	# create forest out of random trees
 	forest <- list()
 	forest <- lapply(    # applies function below `ntree` times, storing it's results in a list
 		seq(1,ntree),
-
-		# grow a tree
-		function(i)
-		rpart(
-			formula = userParamFormula,
-			method = "class",
+		function(i) growRandomTree(
 			data = df,
-			cp = userParamComplexity
-			# TODO should other parameters be changed here?
-		)
+			formula = userParamFormula,
+			complexity = userParamComplexity)
 	)
-	class(forest) <- "Forest"    # list becomes now an object - Forest
-
+	class(forest) <- "Forest"    # list becomes an object - Forest
 
 	return(forest)
 }

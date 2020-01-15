@@ -1,11 +1,15 @@
-#' Helpful function in mowRandomForest.R
 #'
-#' Gets formula required by rpart function, based on dataFrame & classes' column's name.
+#' @name getFormula
+#'
+#' @title Custom Random Forest.
+#' @description Gets formula required by rpart function, based on dataFrame & classes' column's name.
+#' Helpful function in mowRandomForest.R
 #'
 #' @param dataFrame          data frame to be used in function mowRandomForest
 #' @param dataFrameName      name of the data frame (variable name)
 #' @param classesColumnName  name of the column (attribute) in data frame treated as resulting class
 #'
+#' @return auto-generated formula in char.
 #' @export
 
 getFormula <- function (
