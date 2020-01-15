@@ -27,12 +27,15 @@ growRandomTree <- function (
 	zratio = 0
 )
 {
+	# TODO randomisedData <- ...
+
 	return(
 		rpart(
 			formula = formula,
 			method = "class",
-			data = dataFrame,
+			data = dataFrame,     # TODO randomisedData here
 			cp = complexity
+			# TODO method = ...
 			# TODO should other parameters be changed here?
 		)
 	)
