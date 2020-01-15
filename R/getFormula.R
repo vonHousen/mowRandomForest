@@ -29,6 +29,8 @@ getFormula <- function (
 		attributesColumnName <- c(attributesColumnName, column)
 	}
 	# return if given classesColumnName does not match dataFrame
+	if(is.na(classesName))
+		return(NA)
 	if (classesName != classesColumnName)
 		return(NA)
 

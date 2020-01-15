@@ -3,8 +3,8 @@
 #'
 #' @name mowRandomForest
 #'
-#' @description Function - adapter, used as a Proof of Concept.
-#' It plays the role of adapter between user and rpart function.
+#' @description Function constructing custom Random Forest.
+#' It grows mutliple Decision Trees storing them in a single object of 'Forest' class.
 #'
 #' @param df              dataframe consising of attributes & classes used for training
 #' @param classesName     name of the column of classes (values)
@@ -14,6 +14,7 @@
 #' @param zratio          (= 0) frequency of calling function decreasing importance
 #'                        of random attributes
 #'
+#' @return multiple trees representing Random Forest encapsulated inside 'Forest' class.
 #' @export
 
 library(rpart)
@@ -33,20 +34,25 @@ mowRandomForest <- function (
 
 	if(ntree < 1)
 		return(NA)
+	if(is.na(userParamFormula))
+		return(NA)
 
-	trees <- list(length = ntree)
-	for(i in seq(1, ntree))
-	{
+	forest <- list()
+	forest <- lapply(    # applies function below `ntree` times, storing it's results in a list
+		seq(1,ntree),
+
 		# grow a tree
-		singleTree <- rpart(
+		function(i)
+		rpart(
 			formula = userParamFormula,
 			method = "class",
 			data = df,
 			cp = userParamComplexity
 			# TODO should other parameters be changed here?
 		)
-		trees[[i]] <- singleTree
-	}
+	)
+	class(forest) <- "Forest"    # list becomes now an object - Forest
 
-	return(trees)
+
+	return(forest)
 }
