@@ -6,9 +6,9 @@
 #' It grows mutliple Decision Trees storing them in a single object of 'Forest' class.
 #'
 #' @param df              dataframe consising of attributes & classes used for training
-#' @param classesName     name of the column of classes (values)
+#' @param formula         name of the column of classes (values)
 #' @param ntree           (= 1) count of trees in ensemble
-#' @param maxdepth        (= -1) max. depth of the trees used in ensemble (-1 = unlimited growing)
+#' @param complexity      (= -1) complexity of the trees used in ensemble (-1 = unlimited growing)
 #' @param nsubset         (= 100) count of elements in subsets used for growing each tree
 #' @param zratio          (= 0) frequency of calling function decreasing importance
 #'                        of random attributes
@@ -18,22 +18,16 @@
 
 mowRandomForest <- function (
 	df,
-	classesName,
+	formula,
 	ntree = 1,
-	maxdepth = -1,
+	complexity = -1,
 	nsubset = 100,
 	zratio = 0
 )
 {
-	# prepare rpart parameters
-	userParamFormula <- getFormula(df, deparse(substitute(df)), classesName)
-	userParamComplexity <- maxdepth
-
 	# check input parameters
 	if(ntree < 1)
-		return(NA)
-	if(is.na(userParamFormula))
-		return(NA)
+		stop("Cannot create a forest without trees.")
 
 	# create forest out of random trees
 	forest <- list()
@@ -41,8 +35,11 @@ mowRandomForest <- function (
 		seq(1,ntree),
 		function(i) growRandomTree(
 			data = df,
-			formula = userParamFormula,
-			complexity = userParamComplexity)
+			formula = formula,
+			complexity = complexity,
+			nsubset = nsubset,
+			zratio = zratio
+			)
 	)
 	class(forest) <- "Forest"    # list becomes an object - Forest
 
