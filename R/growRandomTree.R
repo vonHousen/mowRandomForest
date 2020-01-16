@@ -7,10 +7,10 @@
 #' Function grows a single tree from rpart out of randomised subset of training data.
 #' The tree is ready to become a part of Random Forest.
 #'
-#' @param dataFrame       data frame storing data to train a tree
+#' @param df              data frame storing data to train a tree
 #' @param formula         formula pointing what data should be used as attributes and classes
 #' @param complexity      (= -1) max. depth of the trees used in ensemble (-1 = unlimited growing)
-#' @param nsubset         (= 100) count of elements in subsets used for growing each tree
+#' @param subsetRatio     (= 1) ratio of count of random subset of training data to count of df
 #' @param zratio          (= 0) frequency of calling function decreasing importance
 #'                        of random attributes
 #'
@@ -20,20 +20,23 @@
 library(rpart)
 
 growRandomTree <- function (
-	dataFrame,
+	df,
 	formula,
 	complexity = -1,
-	nsubset = 100,
+	subsetRatio = 1,
 	zratio = 0
 )
 {
-	# TODO randomisedData <- ...
+	# Get count of examples in a subset of data
+	count <- as.integer(nrow(df) * subsetRatio)
 
+	# Get random subset of given data (sample with replacement)
+	randomSubset <- df[sample(nrow(df), count, replace = T), ]
 	return(
 		rpart(
 			formula = formula,
 			method = "class",     # TODO method = getFunctionsToInject(),
-			data = dataFrame,     # TODO randomisedData here
+			data = randomSubset,
 			cp = complexity
 		)
 	)
