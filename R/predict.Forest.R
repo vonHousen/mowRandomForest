@@ -10,7 +10,7 @@
 #' @param newData         data frame of data on which prediction is to be made
 #' TODO any other arguments here?
 #'
-#' @return provided data frame with one more column - predicted class.
+#' @return vector with predicted classes.
 #' @export
 
 predict.Forest <- function (
@@ -18,10 +18,18 @@ predict.Forest <- function (
 	newData
 )
 {
+	# some initial check
 	if (!inherits(forest, "Forest")) stop("Not a legitimate \"Forest\" object")
+	if (is.null(newData)) stop("Missing argument")
 
-	cat("Given forest consists of...")
-	cat(length(forest))
-	cat(" trees. Now I will be ")
-	cat("working on the data...") # TODO replace with real code
+	# call predict method on every tree in the forest & store their predictions in a list
+	predictions <- lapply(forest, predict, newdata = newData, type = "class")
+
+	# make it a data frame
+	predictions <- data.frame(predictions)
+
+	# compare all predictions and take the most frequent prediction for each case (voting)
+	afterVoting <- apply(predictions, 1, function(x) tail(names(sort(table(x))), 1))
+
+	return(afterVoting)
 }

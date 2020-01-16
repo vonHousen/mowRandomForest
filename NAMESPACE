@@ -2,5 +2,6 @@
 
 S3method(predict,Forest)
 export(getFormula)
+export(getFunctionsToInject)
 export(growRandomTree)
 export(mowRandomForest)
