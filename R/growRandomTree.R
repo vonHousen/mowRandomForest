@@ -32,11 +32,9 @@ growRandomTree <- function (
 	return(
 		rpart(
 			formula = formula,
-			method = "class",
+			method = "class",     # TODO method = getFunctionsToInject(),
 			data = dataFrame,     # TODO randomisedData here
 			cp = complexity
-			# TODO method = ...
-			# TODO should other parameters be changed here?
 		)
 	)
 }

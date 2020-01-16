@@ -31,3 +31,6 @@ tree <- rpart(
 # Show it
 fancyRpartPlot(tree, caption = NULL)
 
+# Predict something
+prediction <- predict(tree, newdata = wineWhite[1:11], type = "class")
+
