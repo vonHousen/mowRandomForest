@@ -23,9 +23,9 @@ growRandomTree <- function (
 	df,
 	formula,
 	complexity = -1,
-	maxDepth = 5,
+	maxDepth = 30,
 	subsetRatio = 1,
-	zratio = 0
+	zratio = 0.3
 )
 {
 	# Get count of examples in a subset of data

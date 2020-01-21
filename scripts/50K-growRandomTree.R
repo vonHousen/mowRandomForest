@@ -30,7 +30,7 @@ tree1 <- growRandomTree(
   formula = salary ~ .,
   subsetRatio = 0.1,
   maxDepth = 2,
-  zratio = 0.6
+  zratio = 0.3
 )
 print(tree1)
 summary(tree1)
