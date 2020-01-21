@@ -23,6 +23,7 @@ growRandomTree <- function (
 	df,
 	formula,
 	complexity = -1,
+	maxDepth = 5,
 	subsetRatio = 1,
 	zratio = 0
 )
@@ -35,9 +36,13 @@ growRandomTree <- function (
 	return(
 		rpart(
 			formula = formula,
-			method = "class",     # TODO method = getFunctionsToInject(),
+			#method = "class",     # TODO 
+			method = getFunctionsToInject(),
 			data = randomSubset,
-			cp = complexity
+			control = rpart.control(
+			  cp = complexity,
+			  maxdepth = maxDepth
+			)
 		)
 	)
 }
