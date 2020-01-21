@@ -30,32 +30,39 @@ customEval <- function(y, wt, parms)
 
 #custom split function
 customSplit <- function(y, wt, x, parms, continuous)
-{
-  y <- y - sum(y*wt)/sum(wt)
+{  # Center y
+  n <- length(y)
+  y <- y- sum(y*wt)/sum(wt)
   
   if (continuous) {
     # continuous x variable
-    n <- length(y)
-  
-    left.wt  <- cumsum(wt)[-n]
     temp <- cumsum(y*wt)[-n]
+    
+    left.wt  <- cumsum(wt)[-n]
+    right.wt <- sum(wt) - left.wt
     lmean <- temp/left.wt
-    direction=sign(lmean)
-    
-    #goodness <- runif(n-1, min = 0, max = 0.5)
-    goodness <- c(rep(runif(1, min = 0, max = 1), n-1))
-    
-    list(goodness = goodness, direction=direction)
+    rmean <- -temp/right.wt
+    goodness <- runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2)
+    list(goodness= goodness, direction=sign(lmean))
   }
   else {
-    ux <- unique(x)
-    n <- length(ux)
+    # Categorical X variable
+    ux <- sort(unique(x))
+    wtsum <- tapply(wt, x, sum)
+    ysum  <- tapply(y*wt, x, sum)
+    means <- ysum/wtsum
     
-    goodness <- c(rep(runif(1, min = 0, max = 1), n-1))
-    direction = sample(ux)
-    
-    list(goodness= goodness,
-         direction =direction)
+    # For anova splits, we can order the categories by their means
+    #  then use the same code as for a non-categorical
+    ord <- order(means)
+    n <- length(ord)
+    temp <- cumsum(ysum[ord])[-n]
+    left.wt  <- cumsum(wtsum[ord])[-n]
+    right.wt <- sum(wt) - left.wt
+    lmean <- temp/left.wt
+    rmean <- -temp/right.wt
+    list(goodness= runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2),
+         direction = ux[ord])
   }
   
   #goodness <- runif(n-1, min = 0, max = 1)

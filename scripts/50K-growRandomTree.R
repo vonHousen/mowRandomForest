@@ -1,6 +1,7 @@
 library(rattle)
 library(rpart.plot)
 library(RColorBrewer)
+install('.')
 library(mowRandomForest)
 library(rpart)
 library(caret)
@@ -26,7 +27,8 @@ head(over50K)
 tree1 <- growRandomTree(
   df = over50K,
   formula = salary ~ .,
-  subsetRatio = 0.1
+  subsetRatio = 0.1,
+  maxDepth = 2
 )
 print(tree1)
 summary(tree1)
