@@ -34,6 +34,9 @@ customSplit <- function(y, wt, x, parms, continuous)
   n <- length(y)
   y <- y- sum(y*wt)/sum(wt)
   
+  # losuj czy parametr ma być wzięty pod uwagę
+  isCounted <- rbinom(1,1,zratio)
+  
   if (continuous) {
     # continuous x variable
     temp <- cumsum(y*wt)[-n]
@@ -42,7 +45,9 @@ customSplit <- function(y, wt, x, parms, continuous)
     right.wt <- sum(wt) - left.wt
     lmean <- temp/left.wt
     rmean <- -temp/right.wt
-    goodness <- runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2)
+    #goodness <- runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2)
+    goodness <- isCounted*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2)
+    
     list(goodness= goodness, direction=sign(lmean))
   }
   else {
@@ -61,7 +66,10 @@ customSplit <- function(y, wt, x, parms, continuous)
     right.wt <- sum(wt) - left.wt
     lmean <- temp/left.wt
     rmean <- -temp/right.wt
-    list(goodness= runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2),
+    #list(goodness= runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2),
+    #     direction = ux[ord])
+    
+    list(goodness=isCounted*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2),
          direction = ux[ord])
   }
   

@@ -30,6 +30,9 @@ growRandomTree <- function (
 {
 	# Get count of examples in a subset of data
 	count <- as.integer(nrow(df) * subsetRatio)
+	
+	#set up zratio to global zratio variable
+	zratio <<- zratio
 
 	# Get random subset of given data (sample with replacement)
 	randomSubset <- df[sample(nrow(df), count, replace = T), ]

@@ -1,6 +1,7 @@
 library(rattle)
 library(rpart.plot)
 library(RColorBrewer)
+library(devtools)
 install('.')
 library(mowRandomForest)
 library(rpart)
@@ -28,7 +29,8 @@ tree1 <- growRandomTree(
   df = over50K,
   formula = salary ~ .,
   subsetRatio = 0.1,
-  maxDepth = 2
+  maxDepth = 2,
+  zratio = 0.6
 )
 print(tree1)
 summary(tree1)
@@ -54,4 +56,12 @@ fancyRpartPlot(tree2)
 tree2_preds <- predict(tree2, testOver50k)
 confusionMatrix(data = factor(ifelse(tree2_preds >= 1.5, 2, 1)), reference = factor(testOver50k$salary))
 
+
+forest <- mowRandomForest(
+  df = over50K,
+  formula = salary ~ .,
+  ntree = 20,
+  complexity = 0.1,
+  subsetRatio = 0.3
+)
                 
