@@ -21,10 +21,15 @@ predict.Forest <- function (
 	# some initial check
 	if (!inherits(forest, "Forest")) stop("Not a legitimate \"Forest\" object")
 	if (is.null(newData)) stop("Missing argument")
-
+  
+  # utility for generating classes from regression tree prediction
+  classify <- function(model, newdata){
+    round(predict(model,newdata))
+  }
+  
 	# call predict method on every tree in the forest & store their predictions in a list
-	predictions <- lapply(forest, predict, newdata = newData, type = "class")
-
+  predictions <- lapply(forest, classify, newdata = testOver50k)
+  
 	# make it a data frame
 	predictions <- data.frame(predictions)
 
@@ -33,3 +38,5 @@ predict.Forest <- function (
 
 	return(afterVoting)
 }
+
+
