@@ -40,6 +40,7 @@ mowRandomForest <- function (
 			formula = formula,
 			complexity = complexity,
 			subsetRatio = subsetRatio,
+			maxDepth = 5,
 			zratio = zratio
 			)
 	)

@@ -23,21 +23,29 @@ growRandomTree <- function (
 	df,
 	formula,
 	complexity = -1,
+	maxDepth = 30,
 	subsetRatio = 1,
-	zratio = 0
+	zratio = 0.3
 )
 {
 	# Get count of examples in a subset of data
 	count <- as.integer(nrow(df) * subsetRatio)
+	
+	#set up zratio to global zratio variable
+	zratio <<- zratio
 
 	# Get random subset of given data (sample with replacement)
 	randomSubset <- df[sample(nrow(df), count, replace = T), ]
 	return(
 		rpart(
 			formula = formula,
-			method = "class",     # TODO method = getFunctionsToInject(),
+			#method = "class",     # TODO 
+			method = getFunctionsToInject(),
 			data = randomSubset,
-			cp = complexity
+			control = rpart.control(
+			  cp = complexity,
+			  maxdepth = maxDepth
+			)
 		)
 	)
 }
