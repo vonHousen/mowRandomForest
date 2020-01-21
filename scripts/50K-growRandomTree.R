@@ -33,7 +33,7 @@ summary(tree1)
 fancyRpartPlot(tree1)
 
 tree1_preds <- predict(tree1, testOver50k)
-confusionMatrix(data = ifelse(tree1_preds >= 1.5, 2, 1), reference = testOver50k$salary)
+confusionMatrix(data = factor(ifelse(tree1_preds >= 1.5, 2, 1)), reference = factor(testOver50k$salary))
 
 
 #grow tree with anova
@@ -50,4 +50,6 @@ summary(tree2)
 fancyRpartPlot(tree2)
 
 tree2_preds <- predict(tree2, testOver50k)
-confusionMatrix(data = factor(ifelse(tree2_preds >= 1.5, 2, 1)), reference = factor(testOver50k$salary)
+confusionMatrix(data = factor(ifelse(tree2_preds >= 1.5, 2, 1)), reference = factor(testOver50k$salary))
+
+                
