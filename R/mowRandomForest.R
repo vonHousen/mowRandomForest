@@ -16,6 +16,7 @@
 #' @return multiple trees representing Random Forest encapsulated inside 'Forest' class.
 #' @export
 
+
 mowRandomForest <- function (
 	df,
 	formula,
@@ -40,7 +41,7 @@ mowRandomForest <- function (
 			formula = formula,
 			complexity = complexity,
 			subsetRatio = subsetRatio,
-			maxDepth = 5,
+			maxDepth = 10,
 			zratio = zratio
 			)
 	)

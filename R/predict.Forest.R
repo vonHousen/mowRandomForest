@@ -28,7 +28,7 @@ predict.Forest <- function (
   }
   
 	# call predict method on every tree in the forest & store their predictions in a list
-  predictions <- lapply(forest, classify, newdata = newData)
+  predictions <- mclapply(forest, classify, newdata = newData)
   
 	# make it a data frame
 	predictions <- data.frame(predictions)
