@@ -23,6 +23,7 @@ library(rpart)
 library(parallel)
 
 
+
 #complexity test
 print(" ======== COMPLEXITY TEST ========")
 print("ldrzew subset z")
@@ -83,7 +84,7 @@ print("z subset comlexity")
 print("0.3 0.6 0.01")
 print("l drzew 10 20 40 50 100 200")
 n_tree <- c(10, 20, 40, 50, 100, 200)
-for (n_i in ntree) {
+for (n_i in n_tree) {
   print(system.time(
     {
       print("tree number")
