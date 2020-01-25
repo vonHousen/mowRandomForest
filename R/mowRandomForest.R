@@ -34,7 +34,7 @@ mowRandomForest <- function (
 
 	# create forest out of random trees
 	forest <- list()
-	forest <- lapply(    # applies function below `ntree` times, storing it's results in a list
+	forest <- mclapply(    # applies function below `ntree` times, storing it's results in a list
 		seq(1,ntree),
 		function(i) growRandomTree(
 			df = df,

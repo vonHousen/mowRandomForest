@@ -1,21 +1,15 @@
-# Load data
-over50K = read.csv(
-  file = 'data/50K-y/adult.data',
-  header = TRUE,
-  sep = ','
+#load data
+bank = read.csv(
+  file = "data/bank/bank-full.csv", 
+  header = TRUE, 
+  sep = ";"
 )
 
-testOver50k = read.csv(
-  file = 'data/50K-y/adult.test',
-  header = TRUE,
-  sep = ','
-)
-
-dataset <- rbind(testOver50k,over50K)
-dataset$salary <- as.factor(dataset$salary)
+dataset <- bank
+dataset$y <- as.factor(dataset$y)
 
 
-dataset <- dataset[sample(nrow(dataset)),]
+dataset <- dataset[sample(0.4*nrow(dataset)),]
 train_indices <- 1:round(0.7 * nrow(dataset))
 trainset <- dataset[train_indices,]
 test_indices <- round(0.7 * nrow(dataset)):nrow(dataset)
@@ -33,8 +27,8 @@ library(parallel)
 print(" ======== COMPLEXITY TEST ========")
 print("ldrzew subset z")
 print("20 0.6 0.3")
-print("complexity 0.1 0.05 0.01 0.005 0.001 0.0005")
-complexity <- c(0.05, 0.01, 0.005, 0.001, 0.0005)
+print("complexity 0.05 0.01 0.005 0.001 0.0005 -1")
+complexity <- c(0.05, 0.01, 0.005, 0.001, 0.0005, -1)
 for (comp_i in complexity) {
   print(system.time(
     {
@@ -42,14 +36,16 @@ for (comp_i in complexity) {
       print(comp_i)
       mowForest <- mowRandomForest(
         df = trainset,
-        formula = salary ~.,
+        formula = y ~.,
         ntree = 20,
-        complexity = 0.01,
+        complexity = comp_i,
         subsetRatio = 0.6,
         zratio = 0.3
       )
       mow_forest_preeds <- predict(mowForest,testset)
-      print(confusionMatrix(factor(testset$salary),factor(mow_forest_preeds)))
+      mow_forest_preeds <- factor(mow_forest_preeds)
+      levels(mow_forest_preeds) <- levels(factor(ifelse(testset$y=='yes',2,1)))
+      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),mow_forest_preeds))
     }
   ))
 }
@@ -67,14 +63,16 @@ for (sub_i in subset) {
       print(sub_i)
       mowForest <- mowRandomForest(
         df = trainset,
-        formula = salary ~.,
+        formula = y ~.,
         ntree = 20,
         complexity = 0.01,
         subsetRatio = sub_i,
         zratio = 0.3
       )
       mow_forest_preeds <- predict(mowForest,testset)
-      print(confusionMatrix(factor(testset$salary),factor(mow_forest_preeds)))
+      mow_forest_preeds <- factor(mow_forest_preeds)
+      levels(mow_forest_preeds) <- levels(factor(ifelse(testset$y=='yes',2,1)))
+      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),mow_forest_preeds))
     }
   ))
 }
@@ -84,26 +82,25 @@ print(" ======== l DRZEW TEST ========")
 print("z subset comlexity")
 print("0.3 0.6 0.01")
 print("l drzew 10 20 40 50 100 200")
-ntree <- c(10, 20, 40, 50, 100, 200)
+n_tree <- c(10, 20, 40, 50, 100, 200)
 for (n_i in ntree) {
   print(system.time(
     {
-      print("tree numbers")
+      print("tree number")
       print(n_i)
       mowForest <- mowRandomForest(
         df = trainset,
-        formula = salary ~.,
+        formula = y ~.,
         ntree = n_i,
         complexity = 0.01,
         subsetRatio = 0.6,
         zratio = 0.3
       )
       mow_forest_preeds <- predict(mowForest,testset)
-      print(confusionMatrix(factor(testset$salary),factor(mow_forest_preeds)))
+      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),factor(mow_forest_preeds)))
     }
   ))
 }
-
 
 
 #z test
@@ -119,14 +116,15 @@ for (z_i in z) {
       print(z_i)
       mowForest <- mowRandomForest(
         df = trainset,
-        formula = salary ~.,
+        formula = y ~.,
         ntree = 20,
         complexity = 0.01,
         subsetRatio = 0.6,
         zratio = z_i
       )
       mow_forest_preeds <- predict(mowForest,testset)
-      print(confusionMatrix(factor(testset$salary),factor(mow_forest_preeds)))
+      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),factor(mow_forest_preeds)))
     }
   ))
 }
+

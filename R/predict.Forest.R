@@ -8,7 +8,6 @@
 #'
 #' @param forest          object of Forest class representing Random Forest
 #' @param newData         data frame of data on which prediction is to be made
-#' TODO any other arguments here?
 #'
 #' @return vector with predicted classes.
 #' @export

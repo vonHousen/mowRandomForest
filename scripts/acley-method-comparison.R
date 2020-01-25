@@ -39,19 +39,19 @@ library(devtools)
 install('.')
 library(mowRandomForest)
 library(rpart)
+library(parallel)
 
 #grow a custom forest
 mowForest <- mowRandomForest(
   df = trainset,
   formula = Class ~.,
-  ntree = 100,
+  ntree = 10000,
   complexity = -1,
   subsetRatio = 0.6,
   zratio = 0.3
 )
 
 mow_forest_preeds <- predict(mowForest,newData = testset)
-
 mow_forest_preeds <- (factor(mow_forest_preeds))
 # Get some feedback
 levels(mow_forest_preeds) <- levels(factor(testset$Class))
