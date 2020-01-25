@@ -1,0 +1,44 @@
+[1] "subset"
+[1] 0.1
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5140   36
+         2  210   40
+--
+[1] "subset"
+[1] 0.2
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5142   34
+         2  199   51
+--
+[1] "subset"
+[1] 0.4
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5145   31
+         2  194   56
+--
+[1] "subset"
+[1] 0.6
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5166   10
+         2  223   27
+--
+[1] "subset"
+[1] 0.8
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5157   19
+         2  215   35

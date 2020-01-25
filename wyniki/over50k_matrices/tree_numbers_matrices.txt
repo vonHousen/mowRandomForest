@@ -1,0 +1,53 @@
+[1] "tree numbers"
+[1] 10
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10625   546
+         2  1695  1788
+--
+[1] "tree numbers"
+[1] 20
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1676  1807
+--
+[1] "tree numbers"
+[1] 40
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1678  1805
+--
+[1] "tree numbers"
+[1] 50
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10628   543
+         2  1680  1803
+--
+[1] "tree numbers"
+[1] 100
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10633   538
+         2  1678  1805
+--
+[1] "tree numbers"
+[1] 200
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10630   541
+         2  1678  1805

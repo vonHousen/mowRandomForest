@@ -1,0 +1,44 @@
+[1] "complexity"
+[1] 0.05
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1707  1776
+--
+[1] "complexity"
+[1] 0.01
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10642   529
+         2  1686  1797
+--
+[1] "complexity"
+[1] 0.005
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10567   604
+         2  1574  1909
+--
+[1] "complexity"
+[1] 0.001
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10606   565
+         2  1617  1866
+--
+[1] "complexity"
+[1] 5e-04
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10752   419
+         2  1801  1682

@@ -1,0 +1,26 @@
+[1] "z ratio"
+[1] 0.6
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5115   61
+         2  169   81
+--
+[1] "z ratio"
+[1] 0.3
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5162   14
+         2  230   20
+--
+[1] "z ratio"
+[1] 0.1
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2
+         1 5176    0
+         2  250    0
