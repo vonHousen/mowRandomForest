@@ -98,7 +98,9 @@ for (n_i in n_tree) {
         zratio = 0.3
       )
       mow_forest_preeds <- predict(mowForest,testset)
-      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),factor(mow_forest_preeds)))
+      mow_forest_preeds <- factor(mow_forest_preeds)
+      levels(mow_forest_preeds) <- levels(factor(ifelse(testset$y=='yes',2,1)))
+      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),mow_forest_preeds))
     }
   ))
 }
@@ -124,7 +126,9 @@ for (z_i in z) {
         zratio = z_i
       )
       mow_forest_preeds <- predict(mowForest,testset)
-      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),factor(mow_forest_preeds)))
+      mow_forest_preeds <- factor(mow_forest_preeds)
+      levels(mow_forest_preeds) <- levels(factor(ifelse(testset$y=='yes',2,1)))
+      print(confusionMatrix(factor(ifelse(testset$y=='yes',2,1)),mow_forest_preeds))
     }
   ))
 }

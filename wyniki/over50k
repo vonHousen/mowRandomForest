@@ -1,0 +1,632 @@
+> source('~/RProject/mowRandomForest/scripts/50K-best-mowRandomForest.R')
+✔  checking for file ‘/Users/BittenPear/RProject/mowRandomForest/DESCRIPTION’ ...
+─  preparing ‘mowRandomForest’:
+✔  checking DESCRIPTION meta-information ...
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+─  looking to see if a ‘data/datalist’ file should be added
+─  building ‘mowRandomForest_0.0.0.9000.tar.gz’
+   
+Running /Library/Frameworks/R.framework/Resources/bin/R CMD INSTALL \
+  /var/folders/59/v2nv4m3d7wd0h4rfx3z28q9h0000gn/T//Rtmp6jxLnf/mowRandomForest_0.0.0.9000.tar.gz \
+  --install-tests 
+* installing to library ‘/Library/Frameworks/R.framework/Versions/3.6/Resources/library’
+* installing *source* package ‘mowRandomForest’ ...
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+No man pages found in package  ‘mowRandomForest’ 
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (mowRandomForest)
+[1] " ======== COMPLEXITY TEST ========"
+[1] "ldrzew subset z"
+[1] "20 0.6 0.3"
+[1] "complexity 0.1 0.05 0.01 0.005 0.001 0.0005"
+[1] "complexity"
+[1] 0.05
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1707  1776
+                                          
+               Accuracy : 0.8465          
+                 95% CI : (0.8406, 0.8523)
+    No Information Rate : 0.8418          
+    P-Value [Acc > NIR] : 0.06005         
+                                          
+                  Kappa : 0.5214          
+                                          
+ Mcnemar's Test P-Value : < 2e-16         
+                                          
+            Sensitivity : 0.8616          
+            Specificity : 0.7662          
+         Pos Pred Value : 0.9515          
+         Neg Pred Value : 0.5099          
+             Prevalence : 0.8418          
+         Detection Rate : 0.7253          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8139          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     3.766      0.263     24.232 
+[1] "complexity"
+[1] 0.01
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10642   529
+         2  1686  1797
+                                          
+               Accuracy : 0.8488          
+                 95% CI : (0.8429, 0.8546)
+    No Information Rate : 0.8413          
+    P-Value [Acc > NIR] : 0.006006        
+                                          
+                  Kappa : 0.5291          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8632          
+            Specificity : 0.7726          
+         Pos Pred Value : 0.9526          
+         Neg Pred Value : 0.5159          
+             Prevalence : 0.8413          
+         Detection Rate : 0.7262          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8179          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     4.447      0.463     24.482 
+[1] "complexity"
+[1] 0.005
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10567   604
+         2  1574  1909
+                                          
+               Accuracy : 0.8514          
+                 95% CI : (0.8455, 0.8571)
+    No Information Rate : 0.8285          
+    P-Value [Acc > NIR] : 4.139e-14       
+                                          
+                  Kappa : 0.5464          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8704          
+            Specificity : 0.7596          
+         Pos Pred Value : 0.9459          
+         Neg Pred Value : 0.5481          
+             Prevalence : 0.8285          
+         Detection Rate : 0.7211          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8150          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     3.924      0.298     24.290 
+[1] "complexity"
+[1] 0.001
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10606   565
+         2  1617  1866
+                                          
+               Accuracy : 0.8511          
+                 95% CI : (0.8452, 0.8568)
+    No Information Rate : 0.8341          
+    P-Value [Acc > NIR] : 1.103e-08       
+                                          
+                  Kappa : 0.5414          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8677          
+            Specificity : 0.7676          
+         Pos Pred Value : 0.9494          
+         Neg Pred Value : 0.5357          
+             Prevalence : 0.8341          
+         Detection Rate : 0.7238          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8176          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     4.411      0.425     24.650 
+[1] "complexity"
+[1] 5e-04
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10752   419
+         2  1801  1682
+                                          
+               Accuracy : 0.8485          
+                 95% CI : (0.8426, 0.8543)
+    No Information Rate : 0.8566          
+    P-Value [Acc > NIR] : 0.9974          
+                                          
+                  Kappa : 0.5158          
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.8565          
+            Specificity : 0.8006          
+         Pos Pred Value : 0.9625          
+         Neg Pred Value : 0.4829          
+             Prevalence : 0.8566          
+         Detection Rate : 0.7337          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8285          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     4.212      0.312     24.138 
+[1] " ======== SUBSET RATIO TEST ========"
+[1] "ldrzew z comlexity"
+[1] "20 0.3 0.01"
+[1] "subset 0.1 0.2 0.4 0.6 0.8"
+[1] "subset"
+[1] 0.1
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10603   568
+         2  1708  1775
+                                          
+               Accuracy : 0.8447          
+                 95% CI : (0.8387, 0.8505)
+    No Information Rate : 0.8401          
+    P-Value [Acc > NIR] : 0.06653         
+                                          
+                  Kappa : 0.517           
+                                          
+ Mcnemar's Test P-Value : < 2e-16         
+                                          
+            Sensitivity : 0.8613          
+            Specificity : 0.7576          
+         Pos Pred Value : 0.9492          
+         Neg Pred Value : 0.5096          
+             Prevalence : 0.8401          
+         Detection Rate : 0.7236          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8094          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     2.982      0.142      7.757 
+[1] "subset"
+[1] 0.2
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10607   564
+         2  1652  1831
+                                          
+               Accuracy : 0.8488          
+                 95% CI : (0.8429, 0.8545)
+    No Information Rate : 0.8366          
+    P-Value [Acc > NIR] : 2.83e-05        
+                                          
+                  Kappa : 0.5324          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8652          
+            Specificity : 0.7645          
+         Pos Pred Value : 0.9495          
+         Neg Pred Value : 0.5257          
+             Prevalence : 0.8366          
+         Detection Rate : 0.7238          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8149          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     3.143      0.169     10.558 
+[1] "subset"
+[1] 0.4
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10622   549
+         2  1627  1856
+                                          
+               Accuracy : 0.8515          
+                 95% CI : (0.8456, 0.8572)
+    No Information Rate : 0.8359          
+    P-Value [Acc > NIR] : 1.224e-07       
+                                          
+                  Kappa : 0.5414          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8672          
+            Specificity : 0.7717          
+         Pos Pred Value : 0.9509          
+         Neg Pred Value : 0.5329          
+             Prevalence : 0.8359          
+         Detection Rate : 0.7249          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8194          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     3.507      0.226     16.740 
+[1] "subset"
+[1] 0.6
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10628   543
+         2  1684  1799
+                                          
+               Accuracy : 0.848           
+                 95% CI : (0.8421, 0.8538)
+    No Information Rate : 0.8402          
+    P-Value [Acc > NIR] : 0.004715        
+                                          
+                  Kappa : 0.5273          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8632          
+            Specificity : 0.7681          
+         Pos Pred Value : 0.9514          
+         Neg Pred Value : 0.5165          
+             Prevalence : 0.8402          
+         Detection Rate : 0.7253          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8157          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     4.284      0.425     24.754 
+[1] "subset"
+[1] 0.8
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10644   527
+         2  1719  1764
+                                          
+               Accuracy : 0.8467          
+                 95% CI : (0.8408, 0.8525)
+    No Information Rate : 0.8437          
+    P-Value [Acc > NIR] : 0.1557          
+                                          
+                  Kappa : 0.5206          
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.8610          
+            Specificity : 0.7700          
+         Pos Pred Value : 0.9528          
+         Neg Pred Value : 0.5065          
+             Prevalence : 0.8437          
+         Detection Rate : 0.7264          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8155          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     5.077      0.471     31.752 
+[1] " ======== l DRZEW TEST ========"
+[1] "z subset comlexity"
+[1] "0.3 0.6 0.01"
+[1] "l drzew 10 20 40 50 100 200"
+[1] "tree numbers"
+[1] 10
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10625   546
+         2  1695  1788
+                                          
+               Accuracy : 0.8471          
+                 95% CI : (0.8411, 0.8529)
+    No Information Rate : 0.8407          
+    P-Value [Acc > NIR] : 0.018           
+                                          
+                  Kappa : 0.524           
+                                          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.8624          
+            Specificity : 0.7661          
+         Pos Pred Value : 0.9511          
+         Neg Pred Value : 0.5134          
+             Prevalence : 0.8407          
+         Detection Rate : 0.7251          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8142          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     3.320      0.171     12.901 
+[1] "tree numbers"
+[1] 20
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1676  1807
+                                          
+               Accuracy : 0.8486          
+                 95% CI : (0.8427, 0.8544)
+    No Information Rate : 0.8397          
+    P-Value [Acc > NIR] : 0.001546        
+                                          
+                  Kappa : 0.5296          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8638          
+            Specificity : 0.7693          
+         Pos Pred Value : 0.9515          
+         Neg Pred Value : 0.5188          
+             Prevalence : 0.8397          
+         Detection Rate : 0.7253          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8165          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     3.896      0.282     23.770 
+[1] "tree numbers"
+[1] 40
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1678  1805
+                                          
+               Accuracy : 0.8485          
+                 95% CI : (0.8426, 0.8543)
+    No Information Rate : 0.8398          
+    P-Value [Acc > NIR] : 0.002066        
+                                          
+                  Kappa : 0.5291          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8637          
+            Specificity : 0.7691          
+         Pos Pred Value : 0.9515          
+         Neg Pred Value : 0.5182          
+             Prevalence : 0.8398          
+         Detection Rate : 0.7253          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8164          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     6.499      0.598     44.216 
+[1] "tree numbers"
+[1] 50
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10628   543
+         2  1680  1803
+                                          
+               Accuracy : 0.8483          
+                 95% CI : (0.8424, 0.8541)
+    No Information Rate : 0.8399          
+    P-Value [Acc > NIR] : 0.002743        
+                                          
+                  Kappa : 0.5284          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8635          
+            Specificity : 0.7685          
+         Pos Pred Value : 0.9514          
+         Neg Pred Value : 0.5177          
+             Prevalence : 0.8399          
+         Detection Rate : 0.7253          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8160          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     6.357      0.600     55.133 
+[1] "tree numbers"
+[1] 100
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10633   538
+         2  1678  1805
+                                          
+               Accuracy : 0.8488          
+                 95% CI : (0.8429, 0.8545)
+    No Information Rate : 0.8401          
+    P-Value [Acc > NIR] : 0.002053        
+                                          
+                  Kappa : 0.5297          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8637          
+            Specificity : 0.7704          
+         Pos Pred Value : 0.9518          
+         Neg Pred Value : 0.5182          
+             Prevalence : 0.8401          
+         Detection Rate : 0.7256          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8170          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+    11.627      1.318    109.635 
+[1] "tree numbers"
+[1] 200
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10630   541
+         2  1678  1805
+                                          
+               Accuracy : 0.8486          
+                 95% CI : (0.8427, 0.8543)
+    No Information Rate : 0.8399          
+    P-Value [Acc > NIR] : 0.002062        
+                                          
+                  Kappa : 0.5293          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8637          
+            Specificity : 0.7694          
+         Pos Pred Value : 0.9516          
+         Neg Pred Value : 0.5182          
+             Prevalence : 0.8399          
+         Detection Rate : 0.7254          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8165          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+    22.650      3.168    225.987 
+[1] " ======== Z RATIO TEST ========"
+[1] "ldrzew subset comlexity"
+[1] "20 0.6 0.01"
+[1] "z ratio 0.6, 0.3, 0.1"
+[1] "z ratio"
+[1] 0.6
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10629   542
+         2  1679  1804
+                                          
+               Accuracy : 0.8484          
+                 95% CI : (0.8425, 0.8542)
+    No Information Rate : 0.8399          
+    P-Value [Acc > NIR] : 0.002381        
+                                          
+                  Kappa : 0.5288          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8636          
+            Specificity : 0.7690          
+         Pos Pred Value : 0.9515          
+         Neg Pred Value : 0.5179          
+             Prevalence : 0.8399          
+         Detection Rate : 0.7253          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8163          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     4.067      0.375     26.207 
+[1] "z ratio"
+[1] 0.3
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 10624   547
+         2  1656  1827
+                                          
+               Accuracy : 0.8497          
+                 95% CI : (0.8438, 0.8554)
+    No Information Rate : 0.838           
+    P-Value [Acc > NIR] : 5.711e-05       
+                                          
+                  Kappa : 0.5341          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.8651          
+            Specificity : 0.7696          
+         Pos Pred Value : 0.9510          
+         Neg Pred Value : 0.5245          
+             Prevalence : 0.8380          
+         Detection Rate : 0.7250          
+   Detection Prevalence : 0.7623          
+      Balanced Accuracy : 0.8174          
+                                          
+       'Positive' Class : 1               
+                                          
+użytkownik     system   upłynęło 
+     4.122      0.340     24.784 
+[1] "z ratio"
+[1] 0.1
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     1     2
+         1 11041   130
+         2  2836   647
+                                         
+               Accuracy : 0.7976         
+                 95% CI : (0.791, 0.8041)
+    No Information Rate : 0.947          
+    P-Value [Acc > NIR] : 1              
+                                         
+                  Kappa : 0.2377         
+                                         
+ Mcnemar's Test P-Value : <2e-16         
+                                         
+            Sensitivity : 0.7956         
+            Specificity : 0.8327         
+         Pos Pred Value : 0.9884         
+         Neg Pred Value : 0.1858         
+             Prevalence : 0.9470         
+         Detection Rate : 0.7534         
+   Detection Prevalence : 0.7623         
+      Balanced Accuracy : 0.8142         
+                                         
+       'Positive' Class : 1              
+                                         
+użytkownik     system   upłynęło 
+     4.020      0.313     18.308 
