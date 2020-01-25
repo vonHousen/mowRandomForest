@@ -16,6 +16,7 @@
 #' @return multiple trees representing Random Forest encapsulated inside 'Forest' class.
 #' @export
 
+
 mowRandomForest <- function (
 	df,
 	formula,
@@ -33,14 +34,14 @@ mowRandomForest <- function (
 
 	# create forest out of random trees
 	forest <- list()
-	forest <- lapply(    # applies function below `ntree` times, storing it's results in a list
+	forest <- mclapply(    # applies function below `ntree` times, storing it's results in a list
 		seq(1,ntree),
 		function(i) growRandomTree(
 			df = df,
 			formula = formula,
 			complexity = complexity,
 			subsetRatio = subsetRatio,
-			maxDepth = 5,
+			maxDepth = 10,
 			zratio = zratio
 			)
 	)

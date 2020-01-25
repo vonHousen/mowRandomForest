@@ -8,7 +8,6 @@
 #'
 #' @param forest          object of Forest class representing Random Forest
 #' @param newData         data frame of data on which prediction is to be made
-#' TODO any other arguments here?
 #'
 #' @return vector with predicted classes.
 #' @export
@@ -21,10 +20,15 @@ predict.Forest <- function (
 	# some initial check
 	if (!inherits(forest, "Forest")) stop("Not a legitimate \"Forest\" object")
 	if (is.null(newData)) stop("Missing argument")
-
+  
+  # utility for generating classes from regression tree prediction
+  classify <- function(model, newdata){
+    round(predict(model,newdata))
+  }
+  
 	# call predict method on every tree in the forest & store their predictions in a list
-	predictions <- lapply(forest, predict, newdata = newData, type = "class")
-
+  predictions <- mclapply(forest, classify, newdata = newData)
+  
 	# make it a data frame
 	predictions <- data.frame(predictions)
 
@@ -33,3 +37,5 @@ predict.Forest <- function (
 
 	return(afterVoting)
 }
+
+

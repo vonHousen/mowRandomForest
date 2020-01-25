@@ -39,7 +39,6 @@ growRandomTree <- function (
 	return(
 		rpart(
 			formula = formula,
-			#method = "class",     # TODO 
 			method = getFunctionsToInject(),
 			data = randomSubset,
 			control = rpart.control(

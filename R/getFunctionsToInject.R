@@ -5,6 +5,8 @@
 #'
 #' @description Adapter for a list of 3 functions to be injected into rpart on constructing a tree.
 #' Aforementioned functions are required by rpart in order to change it's way of creating splits.
+#' Function set of "Anova" method has been implemented here.
+#' Split function has been modified to discount random argument in dataset.
 #'
 #' @return list of functions: eval, spli & init.
 #' @export
@@ -34,7 +36,8 @@ customSplit <- function(y, wt, x, parms, continuous)
   n <- length(y)
   y <- y- sum(y*wt)/sum(wt)
   
-  # losuj czy parametr ma być wzięty pod uwagę
+  # Will it count while splitting? 
+  # random binary parameter
   isCounted <- rbinom(1,1,zratio)
   
   if (continuous) {
@@ -45,7 +48,7 @@ customSplit <- function(y, wt, x, parms, continuous)
     right.wt <- sum(wt) - left.wt
     lmean <- temp/left.wt
     rmean <- -temp/right.wt
-    #goodness <- runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2)
+    
     goodness <- isCounted*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2)
     
     list(goodness= goodness, direction=sign(lmean))
@@ -66,16 +69,9 @@ customSplit <- function(y, wt, x, parms, continuous)
     right.wt <- sum(wt) - left.wt
     lmean <- temp/left.wt
     rmean <- -temp/right.wt
-    #list(goodness= runif(n = 1,min = 0,max = 1)*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2),
-    #     direction = ux[ord])
-    
     list(goodness=isCounted*(left.wt*lmean^2 + right.wt*rmean^2)/sum(wt*y^2),
          direction = ux[ord])
   }
-  
-  #goodness <- runif(n-1, min = 0, max = 1)
-  #direction <- c(rep(1,n-1))
-  #list(goodness = goodness, direction=direction)
 }
 
 #custom init function
