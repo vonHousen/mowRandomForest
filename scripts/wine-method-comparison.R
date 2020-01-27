@@ -73,6 +73,6 @@ summary(tree)
 fancyRpartPlot(tree)
 
 tree2_preds <- predict(tree, testset)
-tree2_preds <- round(tree2_preds)
-
-confusionMatrix(data = factor(round(tree2_preds)), reference = factor(testset$quality))
+tree2_preds <- factor(round(tree2_preds))
+levels(tree2_preds) <- levels(factor(testset$quality))
+confusionMatrix(data = tree2_preds, reference = factor(testset$quality))

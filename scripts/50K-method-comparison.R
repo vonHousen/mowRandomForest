@@ -1,5 +1,6 @@
 # My first try of training classic random forest
 library(randomForest)
+library(caret)
 
 # Load data
 over50K = read.csv(
@@ -24,16 +25,17 @@ trainset <- dataset[train_indices,]
 test_indices <- round(0.7 * nrow(dataset)):nrow(dataset)
 testset <- dataset[test_indices,]
 
+
+
 # Grow a forest
-forest <- randomForest(
-	salary ~ .,
-	data = trainset
+system.time(
+  forest <- randomForest(
+  	salary ~ .,
+  	data = trainset
+  )
 )
 
 pred_forest <- predict(forest,newdata = testset)
-
-library(caret)
-
 # Get some feedback
 confusionMatrix(factor(testset$salary),factor(pred_forest))
 
@@ -45,14 +47,15 @@ library(mowRandomForest)
 library(rpart)
 
 #grow a custom forest
+system.time(
 mowForest <- mowRandomForest(
   df = trainset,
   formula = salary ~.,
-  ntree = 40,
-  complexity = 0.0001,
-  subsetRatio = 0.6,
-  zratio = 0.3
-)
+  ntree = 50,
+  complexity = -1,
+  subsetRatio = 1,
+  zratio = 0.6
+))
 
 mow_forest_preeds <- predict(mowForest,testset)
 confusionMatrix(factor(testset$salary),factor(mow_forest_preeds))
@@ -69,4 +72,4 @@ summary(tree)
 fancyRpartPlot(tree)
 
 tree2_preds <- predict(tree, testOver50k)
-confusionMatrix(data = factor(ifelse(tree2_preds[,1]>= 0.5,1,2)), reference = factor(testOver50k$salary))
+confusionMatrix(factor(testOver50k$salary),factor(ifelse(tree2_preds[,1]>= 0.5,1,2)))

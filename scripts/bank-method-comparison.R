@@ -16,17 +16,18 @@ test_indices <- round(0.7 * nrow(dataset)):nrow(dataset)
 testset <- dataset[test_indices,]
 
 # Grow a forest
+system.time(
 forest <- randomForest(
   y ~ .,
-	data = trainset
-)
+	data = trainset,
+))
 
 pred_forest <- predict(forest,newdata = testset)
 
 # Get some feedback
 levels(pred_forest) <- levels(factor(testset$y))
 
-confusionMatrix(pred_forest,testset$y)
+confusionMatrix(testset$y,pred_forest)
 
 library(devtools)
 install('.')
@@ -37,10 +38,10 @@ library(rpart)
 mowForest <- mowRandomForest(
   df = trainset,
   formula = y ~.,
-  ntree = 10,
-  complexity = 0.01,
-  subsetRatio = 0.6,
-  zratio = 0.3
+  ntree = 50,
+  complexity = -1,
+  subsetRatio = 1,
+  zratio = 0.6
 )
 
 mow_forest_preeds <- predict(mowForest,newData = testset)
@@ -49,7 +50,7 @@ mow_forest_preeds <- (factor(mow_forest_preeds))
 # Get some feedback
 levels(mow_forest_preeds) <- levels(factor(testset$y))
 
-confusionMatrix(mow_forest_preeds,testset$y)
+confusionMatrix(testset$y,mow_forest_preeds)
 
 
 
@@ -68,4 +69,4 @@ fancyRpartPlot(tree)
 tree2_preds <- predict(tree, testset)
 tree2_preds <- round(tree2_preds)
 
-confusionMatrix(data = factor(round(tree2_preds)), reference = factor(testset$y))
+confusionMatrix(factor(testset$y),factor(ifelse(tree2_preds[,1]==1,"no","yes")))

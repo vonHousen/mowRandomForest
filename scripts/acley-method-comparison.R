@@ -2,7 +2,7 @@
 library(randomForest)
 library(rpart)
 
-car.test.frame
+
 # Load data
 avilatr = read.csv("data/avila/avila-tr.txt", header = T, sep = ",")
 avilats = read.csv("data/avila/avila-ts.txt", header = T, sep = ",")
@@ -25,14 +25,18 @@ forest <- randomForest(
 )
 
 pred_forest <- predict(forest,newdata = testset)
+confusionMatrix(pred_forest,testset$Class)
 
 # Get some feedback
-levels(pred_forest) <- levels(factor(testset$Class))
 
 (confusion_matrix <- table(pred_forest,testset$Class))
 (accuracy <- sum(diag(confusion_matrix))/sum(confusion_matrix))
-(precision <- diag(confusion_matrix) / rowSums(confusion_matrix))
-(recall <- (diag(confusion_matrix) / colSums(confusion_matrix)))
+(precision <- mean(diag(confusion_matrix) / rowSums(confusion_matrix)))
+(recall <- mean((diag(confusion_matrix) / colSums(confusion_matrix))))
+recall <- diag(confusion_matrix) / colSums(confusion_matrix)
+precision <-  diag(confusion_matrix) / rowSums(confusion_matrix)
+(f_score <- mean(ifelse(is.nan(2*precision*recall/(precision+recall)),0,2*precision*recall/(precision+recall))))
+
 
 
 library(devtools)
@@ -45,36 +49,58 @@ library(parallel)
 mowForest <- mowRandomForest(
   df = trainset,
   formula = Class ~.,
-  ntree = 10000,
+  ntree = 50,
   complexity = -1,
-  subsetRatio = 0.6,
+  subsetRatio = 1,
   zratio = 0.3
 )
 
 mow_forest_preeds <- predict(mowForest,newData = testset)
+
+
 mow_forest_preeds <- (factor(mow_forest_preeds))
 # Get some feedback
-levels(mow_forest_preeds) <- levels(factor(testset$Class))
+levels(mow_forest_preeds) <- c("A","W","X","Y","B","C","D","E","F","G","H","I")
+mow_forest_preeds <- factor(mow_forest_preeds, levels(mow_forest_preeds)[c(1,5:12,2:4)])
+
+confusionMatrix(mow_forest_preeds,testset$Class)
+
 
 (confusion_matrix <- table(mow_forest_preeds,testset$Class))
 (accuracy <- sum(diag(confusion_matrix))/sum(confusion_matrix))
-(precision <- diag(confusion_matrix) / rowSums(confusion_matrix))
-(recall <- (diag(confusion_matrix) / colSums(confusion_matrix)))
+(precision <- mean(diag(confusion_matrix) / rowSums(confusion_matrix)))
+(recall <- mean((diag(confusion_matrix) / colSums(confusion_matrix))))
+recall <- diag(confusion_matrix) / colSums(confusion_matrix)
+precision <-  diag(confusion_matrix) / rowSums(confusion_matrix)
+(f_score <- mean(ifelse(is.nan(2*precision*recall/(precision+recall)),0,2*precision*recall/(precision+recall))))
+
 
 
 library(rattle)
 library(rpart.plot)
 library(RColorBrewer)#grow tree with rpart
 tree <- rpart(
-  quality ~ .,
+  Class ~ .,
   method = "class",
   data = trainset
+  #cp = 0.005
 )
-print(tree)
-summary(tree)
+
 fancyRpartPlot(tree)
 
-tree2_preds <- predict(tree, testset)
-tree2_preds <- round(tree2_preds)
+tree2_preds <- predict(tree, testset, type="class")
 
-confusionMatrix(data = factor(round(tree2_preds)), reference = factor(testset$quality))
+confusionMatrix(tree2_preds,testset$Class)
+
+tree2_preds <- factor(tree2_preds)
+levels(tree2_preds) <- c("A","D","E","F","G","H","I","X","Y","B","C","W")
+tree2_preds <- factor(tree2_preds, levels(tree2_preds)[c(1,10,11,2:7,12,8,9)])
+
+(confusion_matrix <- table(tree2_preds,testset$Class))
+(accuracy <- sum(diag(confusion_matrix))/sum(confusion_matrix))
+(precision <- mean(ifelse(is.nan(diag(confusion_matrix) / rowSums(confusion_matrix)), 0, diag(confusion_matrix) / rowSums(confusion_matrix))))
+(recall <- mean(diag(confusion_matrix) / colSums(confusion_matrix)))
+recall <- diag(confusion_matrix) / colSums(confusion_matrix)
+precision <-  diag(confusion_matrix) / rowSums(confusion_matrix)
+(f_score <- mean(ifelse(is.nan(2*precision*recall/(precision+recall)),0,2*precision*recall/(precision+recall))))
+
